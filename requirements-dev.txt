@@ -1,0 +1,5 @@
+black
+isort
+pytest
+pytest-testmon
+pytest-watch
