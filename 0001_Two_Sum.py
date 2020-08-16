@@ -18,12 +18,12 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for i, n1 in enumerate(nums):
-            n2 = target - n1
-            try:
-                return [i, nums.index(n2, i + 1)]
-            except ValueError:
-                continue
+        waitingList = {}
+        for i, n in enumerate(nums):
+            if n in waitingList:
+                return [waitingList[n], i]
+            else:
+                waitingList[target - n] = i
 
 
 def test():
