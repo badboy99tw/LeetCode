@@ -17,12 +17,10 @@ import pytest
 
 class Solution:
     def isPalindrome(self, s):
-        if s == "":
-            return True
-        if len(s) == 1:
+        if len(s) in [0, 1]:
             return True
         helfLen = int(len(s) / 2)
-        return s[:helfLen] == s[::-1][:helfLen]
+        return s[:helfLen] == s[-1 : -helfLen - 1 : -1]
 
     def longestPalindrome(self, s: str) -> str:
         maxPossibleLength = 1000
