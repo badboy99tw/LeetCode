@@ -32,9 +32,7 @@ class Solution:
         for i in range(len(s)):
             if maxLength > len(s) - i:
                 break
-            for length in range(min(maxPossibleLength, len(s)), 0, -1):
-                if i + length > len(s):
-                    continue
+            for length in range(min(maxPossibleLength, len(s)) - i, 0, -1):
                 if length < maxLength:
                     break
                 candidate = s[i : i + length]
@@ -57,6 +55,14 @@ def test():
     assert s.longestPalindrome("a") == "a"
     assert s.longestPalindrome("babad") in ["bab", "aba"]
     assert s.longestPalindrome("cbbd") == "bb"
+
+    input_ = "babaddtattarrattatddetartrateedredividerb"
+    expected = "ddtattarrattatdd"
+    assert s.longestPalindrome(input_) == expected
+
+    "anugnxshgonmqydttcvmtsoaprxnhpmpovdolbidqiyqubirkvhwppcdyeouvgedccipsvnobrccbndzjdbgxkzdbcjsjjovnhpnbkurxqfupiprpbiwqdnwaqvjbqoaqzkqgdxkfczdkznqxvupdmnyiidqpnbvgjraszbvvztpapxmomnghfaywkzlrupvjpcvascgvstqmvuveiiixjmdofdwyvhgkydrnfuojhzulhobyhtsxmcovwmamjwljioevhafdlpjpmqstguqhrhvsdvinphejfbdvrvabthpyyphyqharjvzriosrdnwmaxtgriivdqlmugtagvsoylqfwhjpmjxcysfujdvcqovxabjdbvyvembfpahvyoybdhweikcgnzrdqlzusgoobysfmlzifwjzlazuepimhbgkrfimmemhayxeqxynewcnynmgyjcwrpqnayvxoebgyjusppfpsfeonfwnbsdonucaipoafavmlrrlplnnbsaghbawooabsjndqnvruuwvllpvvhuepmqtprgktnwxmflmmbifbbsfthbeafseqrgwnwjxkkcqgbucwusjdipxuekanzwimuizqynaxrvicyzjhulqjshtsqswehnozehmbsdmacciflcgsrlyhjukpvosptmsjfteoimtewkrivdllqiotvtrubgkfcacvgqzxjmhmmqlikrtfrurltgtcreafcgisjpvasiwmhcofqkcteudgjoqqmtucnwcocsoiqtfuoazxdayricnmwcg"
+    expected = "ddtattarrattatdd"
+    assert s.longestPalindrome(input_) == expected
 
     input_ = "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababa"
     expected = input_
