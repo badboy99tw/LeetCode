@@ -42,32 +42,24 @@ class Solution:
     def buddyStrings(self, A: str, B: str) -> bool:
         if len(A) != len(B):
             return False
-        if sorted(A) != sorted(B):
-            return False
 
-        diffA = []
-        diffB = []
-        for cA, cB in zip(A, B):
-            if cA != cB:
-                diffA.append(cA)
-                diffB.append(cB)
-        diffA = "".join(diffA)
-        diffB = "".join(diffB)
-        if diffA and len(diffA) != len(A) and self.buddyStrings(diffA, diffB) is False:
-            return False
-
-        for distance in range(1, len(A)):
-            for i in range(len(A) - distance):
-                j = i + distance
-                swapped = list(A)
-                swapped[i] = A[j]
-                swapped[j] = A[i]
-                if "".join(swapped) == B:
+        if A == B:
+            for c in "abcdefghijklmnopqrstuvwxyz":
+                if A.count(c) >= 2:
                     return True
-        return False
+            return False
+
+        diffIndices = [i for i in range(len(A)) if A[i] != B[i]]
+        if len(diffIndices) == 2:
+            listA = list(A)
+            i, j = diffIndices
+            listA[i], listA[j] = listA[j], listA[i]
+            return "".join(listA) == B
+        else:
+            return False
 
 
-@pytest.mark.timeout(8)
+@pytest.mark.timeout(1)
 def test():
     s = Solution()
 
