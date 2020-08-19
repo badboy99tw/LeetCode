@@ -64,6 +64,10 @@ class Solution:
         resultLength = 0
 
         for center in range(len(s)):
+            maxPossibleLength = min(center, len(s) - center - 1) * 2 + 2
+            if maxPossibleLength < resultLength:
+                break
+
             odd = self.getLongestOddPalindrome(s, center)
             even = self.getLongestEvenPalindrome(s, centerLeft=center)
             oddLength = odd["end"] - odd["start"] + 1
